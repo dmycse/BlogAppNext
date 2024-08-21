@@ -31,3 +31,13 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer components {
+  .link {
+    @apply hover:underline hover:decoration-cyan-600;
+  }
+
+  .active_link {
+    @apply text-orange-500 font-bold;
+  }
+}
