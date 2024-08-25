@@ -40,4 +40,8 @@ body {
   .active_link {
     @apply text-orange-500 font-bold;
   }
+
+  .btn {
+    @apply px-6 py-2 border border-cyan-600 hover:text-white hover:bg-cyan-600;
+  }
 }
