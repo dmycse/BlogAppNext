@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 // import { Metadata } from "next";
-// import Link from "next/link";
+import Link from "next/link";
 import { getPosts } from "@/utils/getPosts";
 import PostSearch from "@/components/Posts/PostSearch";
 import Posts from "@/components/Posts/Posts";
+
 
 // export const metadata: Metadata = {
 //   title: "Blog Page | Blog Next App",
@@ -28,8 +29,7 @@ export default function BlogPage() {
     getPosts()
       .then(setPosts)
       .finally(() => setLoading(false));
-  }, [posts])
-
+  }, [])
 
   return (
     <section className="w-full mx-auto flex flex-col items-center" >
@@ -39,6 +39,9 @@ export default function BlogPage() {
         ? <h2>Loading ...</h2>
         : <Posts posts={posts} />
       }
+      <Link href='/blog/new' className="mt-8 link">
+        Create new post
+      </Link>
     </section>
   )
 }

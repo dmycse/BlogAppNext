@@ -13,9 +13,7 @@ export default function PostSearch( {onSearch}:PostSearchProps ) {
 
   let handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-
     let posts = await getPostsBySearch(search);
-
     onSearch(posts);
   }
 
@@ -28,7 +26,9 @@ export default function PostSearch( {onSearch}:PostSearchProps ) {
         value={search}
         onChange={(e) => setSearch(e.target.value)} 
       />
-      <button type="submit" className="px-6 py-2 border border-cyan-600 hover:text-white hover:bg-cyan-600">Search</button>
+      <button type="submit" className="btn">
+        Search
+      </button>
     </form>
   )
 }
