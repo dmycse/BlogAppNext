@@ -32,7 +32,11 @@ const JSONSERVER_URL = 'http://localhost:8000/posts'
 // }
 
 export async function getPosts() {
-  let response = await fetch(JSONSERVER_URL);
+  let response = await fetch(JSONSERVER_URL, {
+    next: {
+      revalidate: 10
+    }
+  });
 
   if (!response.ok) {
     throw new Error('Unable to fetch post');

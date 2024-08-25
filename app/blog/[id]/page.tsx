@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getPostById } from "@/utils/getPosts";
+import { getPostById, getPosts } from "@/utils/getPosts";
 import DeletePost from "@/components/Posts/DeletePost";
 import Link from "next/link";
 
@@ -8,6 +8,20 @@ type PostProps = {
     id: string;
   };
 };
+
+type Post = {
+  id: string
+  title: string
+  body: string
+}
+
+export async function generateStaticParams() {
+  let posts = await getPosts();
+
+  return posts.map((post: Post) => ({
+    slug: post.id.toString()
+  }))
+}
 
 
 export async function generateMetadata({params: { id }}: PostProps): Promise<Metadata> {
