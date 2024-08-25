@@ -45,8 +45,12 @@ export async function updatePost(data: FormData) {
   redirect(`/blog/${post.id}`);
 }
 
+
+
 export async function deletePost(id: string) {
   await fetch(`${JSONSERVER_URL}/${id}`, {
     method: "DELETE"
   });
+  revalidatePath('/blog');
+  redirect('/blog');
 }
